@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>A-Cinema VR: ARTOLDO</title>
+    <script src="assets/engine6.js"></script>
+    <script src="assets/animation.js"></script>
+    <script src="assets/mouse.js"></script>
+    <script src="assets/environment.js"></script>
+
+    <style type="text/css">
+      #video-permission {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: black;
+          z-index: 10000;
+          display: none;
+      }
+
+      #video-permission-button {
+        position: fixed;
+        top: calc(50% - 1em);
+        left: calc(50% - 110px);
+        width: 220px;
+        height: 2em;
+        color: #FFFFFF !important;
+  	font-size: 30px;
+  	border-radius: 10px;
+  	background: #AD9900;
+        border: 0px solid #AD9900;
+      }
+
+
+    </style>
+
+  </head>
+  <body bgcolor="black">
+
+    <div id="video-permission">
+      <button id="video-permission-button">E N T E R</button>
+    </div>
+
+    <a-scene loading-screen="dotsColor: red; backgroundColor: black" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+     <a-entity environment="preset: tron; dressingAmount:500; dressingColor: #ad9900; gridColor: #ad9900; horizonColor: #ad9900; skyColor: #ad9900; groundColor: #000000;" light="intensity: 0.6; type: hemisphere;"></a-entity>
+
+      <a-assets>
+        <img src="assets/play.png" id="play" crossorigin="anonymous">
+        <img src="assets/pause.png" id="pause" crossorigin="anonymous">
+        <img src="assets/volume-normal.png" id="volume-normal" crossorigin="anonymous">
+        <img src="assets/volume-mute.png" id="volume-mute" crossorigin="anonymous">
+        <img src="assets/seek-back.png" id="seek-back" crossorigin="anonymous">
+      </a-assets>
+
+      <a-assets>
+        <img src="assets/white_grid_thin.png" id="grid" crossorigin="anonymous">
+        <video id="video-src" src="assets/1.mp4"></video>
+      </a-assets>
+
+      <!-- CURSOR -->
+      <a-entity position="0 1.8 0">
+        <a-entity camera mouse-cursor look-controls="pointerLockEnabled:true;">
+        </a-entity>
+      </a-entity>
+      <!-- END CURSOR -->
+
+      <!-- MEDIAS HOLDER -->
+      <a-sound id="alert-sound" src="src: url(assets/action.wav)" autoplay="false" position="0 0 0"></a-sound>
+      <a-video id="video-screen" src="#video-src" position="0 4.5 -14" width="16" height="9"></a-video>
+      <!-- END MEDIAS HOLDER -->
+
+      <!-- CONTROLS -->
+      <a-image id="control-back" width="0.4" height="0.4" src="#seek-back" position="-0.8 0.6 -6" visible="false" scale="0.85 0.85 0.85"></a-image>
+      <a-image id="control-play" width="0.4" height="0.4" src="#play" position="0 0.6 -6"></a-image>
+      <a-image id="control-volume" width="0.4" height="0.4" src="#volume-normal" position="0.8 0.6 -6" visible="false" scale="0.75 0.75 0.75"></a-image>
+      <!-- END CONTROLS -->
+
+      <!-- PROGRESSBAR -->
+      <a-entity id="progress-bar" geometry="primitive: plane; width: 4; height: 0.06;" material="transparent: true; visible:false; opacity: 0;" position="0 0.1 -6">
+        <a-plane id="progress-bar-track" width="4" height="0.06" color="black" position="0 0 0.005" opacity="0.2" visible="false"></a-plane>
+        <a-plane id="progress-bar-fill" width="0" height="0.06" color="#ad9900" position="-2 0 0.01" visible="false"></a-plane>
+      </a-entity>
+      <!-- END PROGRESSBAR -->
+
+    <!-- Poster -->
+    <a-plane id="Artoldo Cinema" onclick="location.href='index.html';" width="5.418" height="2" position="0 9.2 -13.5" material="src:images/artoldo.png; transparent: true" rotation="0 0 0"></a-plane>
+    
+    <a-plane id="Poster 1" onclick="location.href='1.html';" width="2.8" height="4.2" position="-8 2.5 -7.8" material="src:images/1.jpg; transparent: true" rotation="0  50 0" 
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 2" onclick="location.href='2.html';" width="2.8" height="4.2" position=" 8 2.5 -7.8" material="src:images/2.jpg; transparent: true" rotation="0 -50 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 3" onclick="location.href='3.html';" width="2.8" height="4.2" position="-10 2.5 -4.8" material="src:images/3.jpg; transparent: true" rotation="0  70 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 4" onclick="location.href='4.html';" width="2.8" height="4.2" position=" 10 2.5 -4.8" material="src:images/4.jpg; transparent: true" rotation="0 -70 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 5" onclick="location.href='5.html';" width="2.8" height="4.2" position="-10.6 2.5 -1.2" material="src:images/5.jpg; transparent: true" rotation="0  90 0" 
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 6" onclick="location.href='6.html';" width="2.8" height="4.2" position=" 10.6 2.5 -1.2" material="src:images/6.jpg; transparent: true" rotation="0 -90 0" 
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 7" onclick="location.href='7.html';" width="2.8" height="4.2" position="-10.6 2.5 2.4" material="src:images/7.jpg; transparent: true" rotation="0  90 0" 
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 8" onclick="location.href='8.html';" width="2.8" height="4.2" position=" 10.6 2.5 2.4" material="src:images/8.jpg; transparent: true" rotation="0 -90 0" 
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 9" onclick="location.href='9.html';" width="2.8" height="4.2" position="-10 2.5 6" material="src:images/9.jpg; transparent: true" rotation="0  110 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 10" onclick="location.href='10.html';" width="2.8" height="4.2" position=" 10 2.5 6" material="src:images/10.jpg; transparent: true" rotation="0 -110 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 11" onclick="location.href='11.html';" width="2.8" height="4.2" position="-8.2 2.5 9" material="src:images/11.jpg; transparent: true" rotation="0 140 0" 
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 12" onclick="location.href='12.html';" width="2.8" height="4.2" position=" 8.2 2.5 9" material="src:images/12.jpg; transparent: true" rotation="0 -140 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 13" onclick="location.href='13.html';" width="2.8" height="4.2" position="-5.2 2.5 10.9" material="src:images/13.jpg; transparent: true" rotation="0 160 0" 
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 14" onclick="location.href='14.html';" width="2.8" height="4.2" position=" 5.2 2.5 10.9" material="src:images/14.jpg; transparent: true" rotation="0 -160 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 15" onclick="location.href='15.html';" width="2.8" height="4.2" position=" -1.8 2.5 11.845" material="src:images/15.jpg; transparent: true" rotation="0 180 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+    <a-plane id="Poster 16" onclick="location.href='16.html';" width="2.8" height="4.2" position=" 1.8 2.5 11.845" material="src:images/16.jpg; transparent: true" rotation="0 -180 0"
+                 animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+                 animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+    </a-plane>
+
+  
+
+</a-entity>
+
+
+
+    </a-scene>
+
+    <script src="js/AVideoPlayer.js"></script>
+    <script type="text/javascript">
+      let scene = document.querySelector('a-scene');
+      var cursor = document.querySelector('a-cursor');
+
+     
+      /**
+      * AVideoPlayer
+      */
+      var videoPlayer = new AVideoPlayer();
+
+      /**
+      * CURSOR
+      */
+
+      // Cursor
+      let hideCursor = function() {
+        cursor.removeAttribute('animation__cursorHideLeave');
+        cursor.setAttribute('animation__cursorHideEnter', "property: scale; from: 0.6 0.6 0.6; to: 0 0 0; dur: 300; easing: easeInQuad;");
+      }
+      let showCursor = function() {
+        cursor.removeAttribute('animation__cursorHideEnter');
+        cursor.setAttribute('animation__cursorHideLeave', "property: scale; from: 0 0 0; to: 0.6 0.6 0.6; dur: 300; easing: easeInQuad;");
+      }
+      document.querySelector('#video-screen').addEventListener('mouseenter', hideCursor);
+      document.querySelector('#video-screen').addEventListener('mouseleave', showCursor);
+
+      // Play button action
+      document.querySelector('#control-play').addEventListener('click', function () {
+        if (videoPlayer.paused) {
+          scene.lightOn()
+        } else {
+          scene.lightOff();
+          hideCursor();
+        }
+      });
+    </script>
+  </body>
+</html>
